@@ -1,58 +1,15 @@
-<h1 style="margin-left:10px;">MapQuest</h1>
-<div style="margin:20px;">
-  From: <input (keyup)="update()"  [(ngModel)]="from">
-  To: <input  (keyup)="update()" [(ngModel)]="to">
+<div class="container">
 
-
-<!-- Check if maneuvers has been populated yet.. if not display Fetching data.. -->
-@if(maneuvers.length){
-  <table style="margin-top:20px; width:75%;" class="table table-dark">
-    <thead class="thead-dark">
-      <tr>
-
-        <th colspan="3">Distance: {{totalDistance}}m - Time: {{totalTime}}</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      @for(maneuver of maneuvers; track maneuver.index){
-      <tr style="cursor: pointer;"(click)="selected = maneuver">
-        <th>{{maneuver.index}}</th>
-        <td>{{maneuver.narrative}}</td>
-        <td>{{maneuver.distance | distanceFormat}}</td>
-
-      </tr>
-
-      }
-
-
-    </tbody>
-  </table>
-  <div style="width: 50%;">
-    @if(selected){
-          <h5>{{selected.narrative}}</h5>
-    <p>{{selected | json}}</p>
-    }
-
-  </div>
-
-
-
-
-} @else {
-
-  @if(error){
-    <div style="margin-top: 50px;">
-      <h3>{{error}}</h3>
-      <h4>Please enter valid city and state</h4>
-    </div>
-
-  } @else {
-      <div style="margin-top: 50px;">
-    <h3>Fetching data...</h3>
-  </div>
-  }
-
-}
+	<h3>
+	  {{title}}
+	</h3>
+	
+	<nav>
+		<a routerLink="/" routerLinkActive="active">
+			Contacts List
+		</a>
+	</nav>
+	
+	<router-outlet></router-outlet>
 
 </div>
